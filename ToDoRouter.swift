@@ -19,6 +19,10 @@ class ToDoRouter: ToDoRouterInput {
     }
 
     func presentEditTaskScreen(for task: Task) {
+        let addTaskViewController = AddTaskModuleBuilder.buildAddTaskModule(coreDataManager: coreDataManager, taskToEdit: task)
+
+        viewController?.navigationController?.pushViewController(addTaskViewController, animated: true)
+
         print("Navigate to Edit Task screen for task: \(task.title ?? "")")
     }
 }

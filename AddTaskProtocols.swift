@@ -3,6 +3,7 @@ import UIKit
 
 protocol AddTaskViewInput: AnyObject {
     func configure(with initialTitle: String?, initialDetails: String?)
+    func configureForEditing(task: Task)
     func showSaveSuccessMessage()
     func showSaveErrorMessage(_ message: String)
      func dismissView()
@@ -15,7 +16,7 @@ protocol AddTaskViewOutput: AnyObject {
 }
 
 protocol AddTaskInteractorInput: AnyObject {
-    func saveNewTask(title: String, details: String?)
+    func saveTask(title: String, details: String?, taskToEdit: Task?)
 }
 
 protocol AddTaskInteractorOutput: AnyObject {
@@ -28,5 +29,5 @@ protocol AddTaskRouterInput: AnyObject {
 }
 
 protocol AddTaskModuleBuilderProtocol: AnyObject {
-    static func buildAddTaskModule(coreDataManager: CoreDataManager) -> UIViewController
+    static func buildAddTaskModule(coreDataManager: CoreDataManager, taskToEdit: Task?) -> UIViewController
 }

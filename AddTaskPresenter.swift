@@ -6,8 +6,18 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
     var interactor: AddTaskInteractorInput!
     var router: AddTaskRouterInput!
 
+    private var taskToEdit: Task?
+
+    init(taskToEdit: Task? = nil) {
+        self.taskToEdit = taskToEdit
+    }
+
     func viewDidLoad() {
-        view?.configure(with: nil, initialDetails: nil)
+        if let task = taskToEdit {
+            view?.configureForEditing(task: task)
+        } else {
+            view?.configure(with: nil, initialDetails: nil)
+        }
     }
 
     func didTapSaveButton(title: String?, details: String?) {
@@ -16,7 +26,7 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
             return
         }
 
-        interactor.saveNewTask(title: titleText, details: details?.trimmingCharacters(in: .whitespacesAndNewlines))
+        interactor.saveTask(title: titleText, details: details?.trimmingCharacters(in: .whitespacesAndNewlines), taskToEdit: taskToEdit)
     }
 
     func didTapCancelButton() {

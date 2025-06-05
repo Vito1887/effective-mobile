@@ -30,6 +30,8 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         super.viewDidLoad()
         print("ToDoViewController: viewDidLoad called")
         setupUI()
+        print("ToDoViewController: setupUI completed. TableView frame: \(tableView.frame)")
+        print("ToDoViewController: TableView background color: \(tableView.backgroundColor ?? .clear)")
         presenter.viewDidLoad()
     }
 
@@ -59,6 +61,7 @@ class ToDoViewController: UIViewController, ToDoViewInput {
           ])
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskButtonTapped))
+        print("ToDoViewController: TableView constraints activated")
     }
 
     @objc private func addTaskButtonTapped() {

@@ -53,6 +53,7 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     }
 
     private func setupUI() {
+        print("AddTaskViewController: setupUI called")
         view.backgroundColor = .systemBackground
         title = "Новая задача"
 
@@ -89,8 +90,15 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     }
 
     func configure(with initialTitle: String?, initialDetails: String?) {
+        title = "Новая задача"
         titleTextField.text = initialTitle
         detailsTextView.text = initialDetails
+    }
+
+    func configureForEditing(task: Task) {
+        title = "Редактировать задачу"
+        titleTextField.text = task.title
+        detailsTextView.text = task.details
     }
 
     func showSaveSuccessMessage() {

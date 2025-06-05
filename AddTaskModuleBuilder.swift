@@ -4,7 +4,7 @@ import CoreData
 
 class AddTaskModuleBuilder: AddTaskModuleBuilderProtocol {
 
-    static func buildAddTaskModule(coreDataManager: CoreDataManager) -> UIViewController {
+    static func buildAddTaskModule(coreDataManager: CoreDataManager, taskToEdit: Task? = nil) -> UIViewController {
         let view = AddTaskViewController()
 
         let interactor = AddTaskInteractor(coreDataManager: coreDataManager)
