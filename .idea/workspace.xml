@@ -19,16 +19,10 @@
       <change afterPath="$PROJECT_DIR$/../semprogroup/src/styles/global.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/src/styles/theme.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddTaskInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskInteractor.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddTaskModuleBuilder.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskModuleBuilder.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddTaskPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskPresenter.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddTaskProtocols.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskProtocols.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddTaskViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoInteractor.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ToDoRouter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoRouter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDoViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoViewController.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/effective-mobileTests/effective_mobileTests.swift" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobileTests/effective_mobileTests.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effective-mobile/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile/Info.plist" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inunion/inunion-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../inunion/inunion-frontend" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +142,7 @@
       <workItem from="1748596151551" duration="19753000" />
       <workItem from="1749036620233" duration="2123000" />
       <workItem from="1749109505184" duration="415000" />
-      <workItem from="1749111949853" duration="1587000" />
+      <workItem from="1749111949853" duration="1892000" />
     </task>
     <servers />
   </component>
