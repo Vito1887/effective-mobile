@@ -7,24 +7,7 @@
     <list default="true" id="7501ece3-5681-4662-9909-4094e24c0803" name="Changes" comment="">
       <change afterPath="$PROJECT_DIR$/../../git.lesruk/.idea/git.lesruk.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/github.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskInteractor.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskModuleBuilder.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskPresenter.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskProtocols.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskRouter.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AddTaskViewController.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CoreDataManager.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Model.xcdatamodeld/Model.xcdatamodel/contents" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/NetworkService.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SceneDelegate.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoInteractor.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoModuleBuilder.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoPresenter.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoProtocols.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoRouter.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ToDoViewController.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/.eslintignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/.eslintrc.cjs" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/.gitignore" afterDir="false" />
@@ -37,6 +20,25 @@
       <change afterPath="$PROJECT_DIR$/../semprogroup/src/styles/global.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/src/styles/theme.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../semprogroup/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskInteractor.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskModuleBuilder.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskModuleBuilder.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskPresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskProtocols.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskProtocols.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskRouter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskRouter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CoreDataManager.swift" beforeDir="false" afterPath="$PROJECT_DIR$/CoreDataManager.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NetworkService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/NetworkService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SceneDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/SceneDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoInteractor.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoInteractor.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoModuleBuilder.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoModuleBuilder.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoPresenter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoProtocols.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoProtocols.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoRouter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoRouter.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ToDoViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoViewController.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inunion/inunion-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../inunion/inunion-frontend" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,7 +47,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
@@ -156,6 +158,8 @@
       <updated>1748596150455</updated>
       <workItem from="1748596151551" duration="19753000" />
       <workItem from="1749036620233" duration="2123000" />
+      <workItem from="1749109505184" duration="415000" />
+      <workItem from="1749111949853" duration="1260000" />
     </task>
     <servers />
   </component>

@@ -1,60 +1,51 @@
 import Foundation
 
-// MARK: - Presenter Class
 class ToDoPresenter: ToDoViewOutput, ToDoInteractorOutput {
 
     weak var view: ToDoViewInput?
-    var interactor: ToDoInteractorInput! // Используем Implicitly Unwrapped Optional, так как будет установлен при сборке модуля
-    var router: ToDoRouterInput! // Используем Implicitly Unwrapped Optional
+    var interactor: ToDoInteractorInput!
+    var router: ToDoRouterInput!
 
-    private var currentTasks: [Task] = [] // Локальное хранилище задач для управления списком
-
-    // MARK: - ToDoViewOutput Methods (реагируем на действия View)
+    private var currentTasks: [Task] = []
 
     func viewDidLoad() {
         view?.showLoadingIndicator()
-        interactor.loadTasks() // Начинаем загрузку задач при загрузке View
+        interactor.loadTasks()
     }
 
     func didSelectTask(_ task: Task) {
-        router.presentEditTaskScreen(for: task) // Переходим на экран редактирования выбранной задачи
+        router.presentEditTaskScreen(for: task)
     }
 
     func didTapAddTask() {
-        router.presentAddTaskScreen() // Переходим на экран добавления новой задачи
+        router.presentAddTaskScreen()
     }
 
     func didSearch(with query: String) {
-        interactor.searchTasks(with: query) // Передаем запрос в Interactor для поиска
+        interactor.searchTasks(with: query)
     }
 
     func didTapToggleCompletion(for task: Task) {
-        // Переключаем статус и отправляем в Interactor для обновления
         interactor.updateTaskStatus(task: task, isCompleted: !task.isCompleted)
-        // View будет обновлена через taskDidUpdate от Interactor'а
     }
 
     func didSwipeToDelete(_ task: Task) {
-        interactor.deleteTask(task: task) // Отправляем в Interactor для удаления
-        // View будет обновлена через taskDidDelete от Interactor'а
+        interactor.deleteTask(task: task)
     }
 
-    // MARK: - ToDoInteractorOutput Methods (реагируем на результаты от Interactor'а)
-
     func didLoadTasks(_ tasks: [Task]) {
-        currentTasks = tasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() }) // Сортируем по дате создания
-        view?.displayTasks(currentTasks) // Передаем отсортированные задачи во View
+        currentTasks = tasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() })
+        view?.displayTasks(currentTasks)
         view?.hideLoadingIndicator()
     }
 
     func didFailToLoadTasks(with error: Error) {
         view?.hideLoadingIndicator()
-        view?.showErrorMessage("Failed to load tasks: \(error.localizedDescription)") // Показываем ошибку
+        view?.showErrorMessage("Failed to load tasks: \(error.localizedDescription)")
     }
 
     func didAddTask(_ task: Task) {
-        // При добавлении новой задачи, перезагрузим список для обновления View
-        interactor.loadTasks() // Или более оптимизированно: добавить задачу в currentTasks и обновить View
+        interactor.loadTasks()
     }
 
     func didFailToAddTask(with error: Error) {
@@ -62,23 +53,18 @@ class ToDoPresenter: ToDoViewOutput, ToDoInteractorOutput {
     }
 
     func taskDidUpdate(_ task: Task) {
-        // При обновлении задачи, найдем ее в currentTasks и обновим, затем обновим View
         if let index = currentTasks.firstIndex(where: { $0.objectID == task.objectID }) {
-            currentTasks[index] = task // Обновляем объект в локальном массиве
-             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() })) // Обновляем View, сохраняя сортировку
+            currentTasks[index] = task
+             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() }))
         } else {
-            // Если обновленной задачи нет в текущем списке (например, после поиска), можно перезагрузить список
              interactor.loadTasks()
         }
     }
 
     func taskDidDelete(_ task: Task) {
-        // При удалении задачи, найдем ее в currentTasks и удалим, затем обновим View
          if let index = currentTasks.firstIndex(where: { $0.objectID == task.objectID }) {
              currentTasks.remove(at: index)
-             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() })) // Обновляем View, сохраняя сортировку
+             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() }))
          }
     }
-
-    // TODO: Implement methods for handling search results, etc.
 }

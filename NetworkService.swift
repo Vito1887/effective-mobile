@@ -1,7 +1,5 @@
 import Foundation
 
-// MARK: - API Response Structures (Entities)
-
 struct TodoApiResponse: Codable {
     let todos: [TodoItem]
     let total, skip, limit: Int
@@ -13,8 +11,6 @@ struct TodoItem: Codable {
     let completed: Bool
     let userId: Int
 }
-
-// MARK: - Network Service Protocol and Class
 
 protocol ToDoAPIServiceProtocol {
     func fetchTodos(completion: @escaping (Result<[TodoItem], Error>) -> Void)
@@ -52,6 +48,6 @@ class NetworkService: ToDoAPIServiceProtocol {
             } catch {
                 completion(.failure(error))
             }
-        }.resume() // Start the network request
+        }.resume()
     }
 }
