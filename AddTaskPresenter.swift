@@ -33,6 +33,11 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
         router.dismissAddTaskScreen()
     }
 
+    func didTapDeleteButton() {
+        guard let task = taskToEdit else { return }
+        interactor.deleteTask(task)
+    }
+
     func didSaveTaskSuccessfully() {
         view?.showSaveSuccessMessage()
         router.dismissAddTaskScreen()
@@ -40,5 +45,13 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
 
     func didFailToSaveTask(with error: Error) {
         view?.showSaveErrorMessage("Не удалось сохранить задачу: \(error.localizedDescription)")
+    }
+
+    func didDeleteTaskSuccessfully() {
+        router.dismissAddTaskScreen()
+    }
+
+    func didFailToDeleteTask(with error: Error) {
+        view?.showSaveErrorMessage("Не удалось удалить задачу: \(error.localizedDescription)")
     }
 }

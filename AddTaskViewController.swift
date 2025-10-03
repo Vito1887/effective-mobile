@@ -32,6 +32,13 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
         return button
     }()
 
+    private let deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Удалить", for: .normal)
+        button.setTitleColor(.systemRed, for: .normal)
+        return button
+    }()
+
     private let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -60,6 +67,9 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
         buttonStackView.spacing = 16
         stackView.addArrangedSubview(buttonStackView)
 
+        // Кнопка удаления ниже основных кнопок
+        stackView.addArrangedSubview(deleteButton)
+
         view.addSubview(stackView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +83,7 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
 
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
     }
 
     @objc private func saveButtonTapped() {
@@ -84,16 +95,27 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
         presenter.didTapCancelButton()
     }
 
+    @objc private func deleteButtonTapped() {
+        let alert = UIAlertController(title: "Удалить задачу?", message: "Это действие нельзя отменить.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { [weak self] _ in
+            self?.presenter.didTapDeleteButton()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
     func configure(with initialTitle: String?, initialDetails: String?) {
         title = "Новая задача"
         titleTextField.text = initialTitle
         detailsTextView.text = initialDetails
+        deleteButton.isHidden = true
     }
 
     func configureForEditing(task: Task) {
         title = "Редактировать задачу"
         titleTextField.text = task.title
         detailsTextView.text = task.details
+        deleteButton.isHidden = false
     }
 
     func showSaveSuccessMessage() {
@@ -120,5 +142,6 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     private func setButtonsEnabled(_ enabled: Bool) {
         saveButton.isEnabled = enabled
         cancelButton.isEnabled = enabled
+        deleteButton.isEnabled = enabled
     }
 }
