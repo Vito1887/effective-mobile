@@ -9,7 +9,7 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         let table = UITableView()
         table.register(UITableViewCell.self, forCellReuseIdentifier: "ToDoCell")
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.backgroundColor = .yellow
+        table.backgroundColor = .systemBackground
         return table
     }()
 
@@ -28,13 +28,11 @@ class ToDoViewController: UIViewController, ToDoViewInput {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ToDoViewController: viewDidLoad called")
         setupUI()
         presenter.viewDidLoad()
     }
 
     private func setupUI() {
-        print("ToDoViewController: setupUI called")
         view.backgroundColor = .systemBackground
         title = "Задачи"
 
@@ -53,10 +51,10 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         ])
 
         view.addSubview(activityIndicator)
-         NSLayoutConstraint.activate([
-              activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-              activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-          ])
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskButtonTapped))
     }
@@ -66,23 +64,21 @@ class ToDoViewController: UIViewController, ToDoViewInput {
     }
 
     func displayTasks(_ tasks: [Task]) {
-        print("displayTasks called with \(tasks.count) tasks")
         self.tasks = tasks
         tableView.reloadData()
     }
 
     func showLoadingIndicator() {
         activityIndicator.startAnimating()
-         tableView.alpha = 0.5
-         tableView.isUserInteractionEnabled = false
+        tableView.alpha = 0.5
+        tableView.isUserInteractionEnabled = false
     }
 
     func hideLoadingIndicator() {
         activityIndicator.stopAnimating()
-         tableView.alpha = 1.0
-         tableView.isUserInteractionEnabled = true
+        tableView.alpha = 1.0
+        tableView.isUserInteractionEnabled = true
     }
-
 
     func showErrorMessage(_ message: String) {
         let alert = UIAlertController(title: "Ошибка", message: message, preferredStyle: .alert)
@@ -100,22 +96,16 @@ extension ToDoViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath)
         let task = tasks[indexPath.row]
         cell.textLabel?.text = task.title
-
-         if task.isCompleted {
-             cell.accessoryType = .checkmark
-         } else {
-             cell.accessoryType = .none
-         }
-
+        cell.accessoryType = task.isCompleted ? .checkmark : .none
         return cell
     }
 
-     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-         if editingStyle == .delete {
-             let taskToDelete = tasks[indexPath.row]
-             presenter.didSwipeToDelete(taskToDelete)
-         }
-     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let taskToDelete = tasks[indexPath.row]
+            presenter.didSwipeToDelete(taskToDelete)
+        }
+    }
 }
 
 extension ToDoViewController: UITableViewDelegate {
@@ -125,10 +115,10 @@ extension ToDoViewController: UITableViewDelegate {
         presenter.didSelectTask(selectedTask)
     }
 
-      func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-          let taskToToggle = tasks[indexPath.row]
-          presenter.didTapToggleCompletion(for: taskToToggle)
-      }
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let taskToToggle = tasks[indexPath.row]
+        presenter.didTapToggleCompletion(for: taskToToggle)
+    }
 }
 
 extension ToDoViewController: UISearchBarDelegate {
@@ -143,6 +133,6 @@ extension ToDoViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-         searchBar.resignFirstResponder()
+        searchBar.resignFirstResponder()
     }
 }
