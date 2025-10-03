@@ -32,6 +32,11 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         presenter.viewDidLoad()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter.viewDidLoad()
+    }
+
     private func setupUI() {
         view.backgroundColor = .systemBackground
         title = "Задачи"
