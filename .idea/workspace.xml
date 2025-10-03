@@ -22,7 +22,6 @@
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inunion/inunion-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../inunion/inunion-frontend" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +142,7 @@
       <workItem from="1749036620233" duration="2123000" />
       <workItem from="1749109505184" duration="415000" />
       <workItem from="1749111949853" duration="2313000" />
-      <workItem from="1759483559711" duration="2480000" />
+      <workItem from="1759483559711" duration="2781000" />
     </task>
     <servers />
   </component>

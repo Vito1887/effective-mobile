@@ -53,18 +53,10 @@ class ToDoPresenter: ToDoViewOutput, ToDoInteractorOutput {
     }
 
     func taskDidUpdate(_ task: Task) {
-        if let index = currentTasks.firstIndex(where: { $0.objectID == task.objectID }) {
-            currentTasks[index] = task
-             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() }))
-        } else {
-             interactor.loadTasks()
-        }
+        interactor.loadTasks()
     }
 
     func taskDidDelete(_ task: Task) {
-         if let index = currentTasks.firstIndex(where: { $0.objectID == task.objectID }) {
-             currentTasks.remove(at: index)
-             view?.displayTasks(currentTasks.sorted(by: { $0.creationDate ?? Date() > $1.creationDate ?? Date() }))
-         }
+        interactor.loadTasks()
     }
 }
