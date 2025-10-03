@@ -16,7 +16,6 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
         textView.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
         textView.layer.cornerRadius = 5.0
-
         textView.isScrollEnabled = true
         return textView
     }()
@@ -24,14 +23,12 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     private let saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Сохранить", for: .normal)
-
         return button
     }()
 
     private let cancelButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Отмена", for: .normal)
-
         return button
     }()
 
@@ -39,12 +36,10 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 16
-
         stack.layoutMargins = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         stack.isLayoutMarginsRelativeArrangement = true
         return stack
     }()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +48,6 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     }
 
     private func setupUI() {
-        print("AddTaskViewController: setupUI called")
         view.backgroundColor = .systemBackground
         title = "Новая задача"
 
@@ -82,6 +76,7 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     }
 
     @objc private func saveButtonTapped() {
+        setButtonsEnabled(false)
         presenter.didTapSaveButton(title: titleTextField.text, details: detailsTextView.text)
     }
 
@@ -102,16 +97,28 @@ class AddTaskViewController: UIViewController, AddTaskViewInput {
     }
 
     func showSaveSuccessMessage() {
-         print("Task saved successfully!")
+        print("Task saved successfully!")
     }
 
     func showSaveErrorMessage(_ message: String) {
         let alert = UIAlertController(title: "Ошибка сохранения", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ОК", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
+        setButtonsEnabled(true)
     }
 
-     func dismissView() {
-         view.endEditing(true)
-     }
+    func dismissView() {
+        view.endEditing(true)
+        if let nav = navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+        setButtonsEnabled(true)
+    }
+
+    private func setButtonsEnabled(_ enabled: Bool) {
+        saveButton.isEnabled = enabled
+        cancelButton.isEnabled = enabled
+    }
 }

@@ -8,7 +8,7 @@ class AddTaskModuleBuilder: AddTaskModuleBuilderProtocol {
         let view = AddTaskViewController()
 
         let interactor = AddTaskInteractor(coreDataManager: coreDataManager)
-        let presenter = AddTaskPresenter()
+        let presenter = AddTaskPresenter(taskToEdit: taskToEdit)
         let router = AddTaskRouter()
 
         view.presenter = presenter
