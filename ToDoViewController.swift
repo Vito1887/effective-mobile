@@ -17,7 +17,18 @@ class ToDoViewController: UIViewController, ToDoViewInput {
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
         searchBar.placeholder = "Поиск задач"
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         return searchBar
+    }()
+
+    private lazy var themeButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.translatesAutoresizingMaskIntoConstraints = false
+        b.tintColor = .secondaryLabel
+        b.setImage(UIImage(systemName: ThemeManager.shared.current.iconName), for: .normal)
+        b.showsMenuAsPrimaryAction = true
+        b.menu = makeThemeMenu()
+        return b
     }()
 
     private let activityIndicator: UIActivityIndicatorView = {
@@ -42,9 +53,6 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         view.backgroundColor = .systemBackground
         title = "Задачи"
 
-        navigationItem.titleView = searchBar
-        searchBar.delegate = self
-
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -56,6 +64,8 @@ class ToDoViewController: UIViewController, ToDoViewInput {
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
+        setupTableHeader()
+
         view.addSubview(activityIndicator)
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -63,6 +73,44 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         ])
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTaskButtonTapped))
+    }
+
+    private func setupTableHeader() {
+        let container = UIView()
+        container.backgroundColor = .clear
+
+        container.addSubview(themeButton)
+        container.addSubview(searchBar)
+        searchBar.delegate = self
+
+        NSLayoutConstraint.activate([
+            themeButton.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 16),
+            themeButton.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+            themeButton.widthAnchor.constraint(equalToConstant: 28),
+            themeButton.heightAnchor.constraint(equalToConstant: 28),
+
+            searchBar.leadingAnchor.constraint(equalTo: themeButton.trailingAnchor, constant: 8),
+            searchBar.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -16),
+            searchBar.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            searchBar.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: -8)
+        ])
+
+        container.layoutIfNeeded()
+        let height = searchBar.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height + 16
+        container.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: max(56, height))
+        tableView.tableHeaderView = container
+    }
+
+    private func makeThemeMenu() -> UIMenu {
+        let actions = AppTheme.allCases.map { theme in
+            UIAction(title: theme.title, image: UIImage(systemName: theme.iconName), state: ThemeManager.shared.current == theme ? .on : .off) { [weak self] _ in
+                ThemeManager.shared.current = theme
+                ThemeManager.shared.apply(to: (UIApplication.shared.delegate as? AppDelegate)?.window)
+                self?.themeButton.setImage(UIImage(systemName: theme.iconName), for: .normal)
+                self?.themeButton.menu = self?.makeThemeMenu()
+            }
+        }
+        return UIMenu(title: "Тема", children: actions)
     }
 
     @objc private func addTaskButtonTapped() {
@@ -121,6 +169,27 @@ extension ToDoViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let selectedTask = tasks[indexPath.row]
         presenter.didSelectTask(selectedTask)
+    }
+
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let task = tasks[indexPath.row]
+        return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { [weak self] _ in
+            guard let self = self else { return UIMenu() }
+            let edit = UIAction(title: "Редактировать", image: UIImage(systemName: "square.and.pencil")) { _ in
+                self.presenter.didSelectTask(task)
+            }
+            let share = UIAction(title: "Поделиться", image: UIImage(systemName: "square.and.arrow.up")) { _ in
+                var items: [Any] = []
+                if let title = task.title { items.append(title) }
+                if let details = task.details { items.append(details) }
+                let vc = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                self.present(vc, animated: true)
+            }
+            let delete = UIAction(title: "Удалить", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+                self.presenter.didSwipeToDelete(task)
+            }
+            return UIMenu(title: "", children: [edit, share, delete])
+        }
     }
 }
 

@@ -25,6 +25,7 @@
 		CE5B4CCA2DF07746003C7841 /* AddTaskModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CC92DF07746003C7841 /* AddTaskModuleBuilder.swift */; };
 		CE5B4CD02DF08E9B003C7841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */; };
 		CEED34B22E93ACEA00E7C422 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */; };
+		CEED34B42E93B36200E7C422 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B32E93B36200E7C422 /* ThemeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		CE5B4CC92DF07746003C7841 /* AddTaskModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskModuleBuilder.swift; sourceTree = "<group>"; };
 		CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
+		CEED34B32E93B36200E7C422 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -127,6 +129,7 @@
 		CE5B4C732DF06C6E003C7841 = {
 			isa = PBXGroup;
 			children = (
+				CEED34B32E93B36200E7C422 /* ThemeManager.swift */,
 				CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */,
 				CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */,
 				CE5B4CAA2DF06E0F003C7841 /* Model.xcdatamodeld */,
@@ -324,6 +327,7 @@
 				CE5B4CC42DF076B0003C7841 /* AddTaskPresenter.swift in Sources */,
 				CE5B4CC02DF0766A003C7841 /* AddTaskProtocols.swift in Sources */,
 				CEED34B22E93ACEA00E7C422 /* ToDoTableViewCell.swift in Sources */,
+				CEED34B42E93B36200E7C422 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rootVC = ToDoModuleBuilder.buildToDoModule(coreDataManager: coreDataManager)
         let nav = UINavigationController(rootViewController: rootVC)
         win.rootViewController = nav
+        ThemeManager.shared.apply(to: win)
         win.makeKeyAndVisible()
         return true
     }
@@ -27,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
-
         container.viewContext.automaticallyMergesChangesFromParent = true
         container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return container
