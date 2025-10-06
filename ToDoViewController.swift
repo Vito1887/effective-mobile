@@ -38,15 +38,43 @@ class ToDoViewController: UIViewController, ToDoViewInput {
         return indicator
     }()
 
+    private lazy var emptyView: UIStackView = {
+        let imageView = UIImageView(image: UIImage(systemName: "magnifyingglass"))
+        imageView.tintColor = .tertiaryLabel
+        imageView.contentMode = .scaleAspectFit
+        let label = UILabel()
+        label.text = "Ничего не найдено"
+        label.textColor = .secondaryLabel
+        label.font = .preferredFont(forTextStyle: .subheadline)
+        label.textAlignment = .center
+        let stack = UIStackView(arrangedSubviews: [imageView, label])
+        stack.axis = .vertical
+        stack.alignment = .center
+        stack.spacing = 8
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        let container = UIStackView(arrangedSubviews: [stack])
+        container.translatesAutoresizingMaskIntoConstraints = false
+        return stack
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         presenter.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadTasks), name: .tasksDidChange, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
+    }
+
+    @objc private func reloadTasks() {
+        presenter.viewDidLoad()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     private func setupUI() {
@@ -119,7 +147,24 @@ class ToDoViewController: UIViewController, ToDoViewInput {
 
     func displayTasks(_ tasks: [Task]) {
         self.tasks = tasks
+        updateEmptyState()
         tableView.reloadData()
+    }
+
+    private func updateEmptyState() {
+        if tasks.isEmpty {
+            if tableView.backgroundView == nil {
+                let wrapper = UIView(frame: tableView.bounds)
+                wrapper.addSubview(emptyView)
+                emptyView.centerXAnchor.constraint(equalTo: wrapper.centerXAnchor).isActive = true
+                emptyView.centerYAnchor.constraint(equalTo: wrapper.centerYAnchor).isActive = true
+                tableView.backgroundView = wrapper
+            }
+            tableView.separatorStyle = .none
+        } else {
+            tableView.backgroundView = nil
+            tableView.separatorStyle = .singleLine
+        }
     }
 
     func showLoadingIndicator() {

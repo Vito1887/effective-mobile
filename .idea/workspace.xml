@@ -22,9 +22,8 @@
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/.gitignore" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../тестовый/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddTaskPresenter.swift" beforeDir="false" afterPath="$PROJECT_DIR$/AddTaskPresenter.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ToDoViewController.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ToDoViewController.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/effective-mobile.xcodeproj/project.xcworkspace/xcuserdata/user.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../inunion/inunion-frontend" beforeDir="false" afterPath="$PROJECT_DIR$/../inunion/inunion-frontend" afterDir="false" />
     </list>
@@ -146,7 +145,7 @@
       <workItem from="1749036620233" duration="2123000" />
       <workItem from="1749109505184" duration="415000" />
       <workItem from="1749111949853" duration="2313000" />
-      <workItem from="1759483559711" duration="5379000" />
+      <workItem from="1759483559711" duration="5562000" />
     </task>
     <servers />
   </component>

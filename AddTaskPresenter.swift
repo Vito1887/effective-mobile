@@ -39,6 +39,7 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
     }
 
     func didSaveTaskSuccessfully() {
+        NotificationCenter.default.post(name: .tasksDidChange, object: nil)
         view?.showSaveSuccessMessage()
         router.dismissAddTaskScreen()
     }
@@ -48,6 +49,7 @@ class AddTaskPresenter: AddTaskViewOutput, AddTaskInteractorOutput {
     }
 
     func didDeleteTaskSuccessfully() {
+        NotificationCenter.default.post(name: .tasksDidChange, object: nil)
         router.dismissAddTaskScreen()
     }
 

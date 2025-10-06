@@ -26,6 +26,7 @@
 		CE5B4CD02DF08E9B003C7841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */; };
 		CEED34B22E93ACEA00E7C422 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */; };
 		CEED34B42E93B36200E7C422 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B32E93B36200E7C422 /* ThemeManager.swift */; };
+		CEED34B62E93B96B00E7C422 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B52E93B96B00E7C422 /* Notifications.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 		CEED34B32E93B36200E7C422 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		CEED34B52E93B96B00E7C422 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -130,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				CEED34B32E93B36200E7C422 /* ThemeManager.swift */,
+				CEED34B52E93B96B00E7C422 /* Notifications.swift */,
 				CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */,
 				CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */,
 				CE5B4CAA2DF06E0F003C7841 /* Model.xcdatamodeld */,
@@ -311,6 +314,7 @@
 			files = (
 				CE5B4CD02DF08E9B003C7841 /* AppDelegate.swift in Sources */,
 				CE5B4CCA2DF07746003C7841 /* AddTaskModuleBuilder.swift in Sources */,
+				CEED34B62E93B96B00E7C422 /* Notifications.swift in Sources */,
 				CE5B4CB42DF07371003C7841 /* ToDoProtocols.swift in Sources */,
 				CE5B4CAE2DF0717A003C7841 /* CoreDataManager.swift in Sources */,
 				CE5B4CBA2DF07495003C7841 /* ToDoRouter.swift in Sources */,
