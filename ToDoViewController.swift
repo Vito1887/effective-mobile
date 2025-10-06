@@ -7,9 +7,10 @@ class ToDoViewController: UIViewController, ToDoViewInput {
 
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(UITableViewCell.self, forCellReuseIdentifier: "ToDoCell")
+        table.register(ToDoTableViewCell.self, forCellReuseIdentifier: "ToDoCell")
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .systemBackground
+        table.separatorInset = UIEdgeInsets(top: 0, left: 52, bottom: 0, right: 0)
         return table
     }()
 
@@ -98,10 +99,12 @@ extension ToDoViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as? ToDoTableViewCell else {
+            return UITableViewCell()
+        }
         let task = tasks[indexPath.row]
-        cell.textLabel?.text = task.title
-        cell.accessoryType = task.isCompleted ? .checkmark : .none
+        cell.configure(title: task.title, details: task.details, date: task.creationDate, isCompleted: task.isCompleted)
+        cell.delegate = self
         return cell
     }
 
@@ -119,10 +122,13 @@ extension ToDoViewController: UITableViewDelegate {
         let selectedTask = tasks[indexPath.row]
         presenter.didSelectTask(selectedTask)
     }
+}
 
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let taskToToggle = tasks[indexPath.row]
-        presenter.didTapToggleCompletion(for: taskToToggle)
+extension ToDoViewController: ToDoTableViewCellDelegate {
+    func todoCellDidToggleCompletion(_ cell: ToDoTableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            presenter.didTapToggleCompletion(for: tasks[indexPath.row])
+        }
     }
 }
 

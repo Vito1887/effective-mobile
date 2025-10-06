@@ -24,6 +24,7 @@
 		CE5B4CC82DF0771A003C7841 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CC72DF0771A003C7841 /* AddTaskViewController.swift */; };
 		CE5B4CCA2DF07746003C7841 /* AddTaskModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CC92DF07746003C7841 /* AddTaskModuleBuilder.swift */; };
 		CE5B4CD02DF08E9B003C7841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */; };
+		CEED34B22E93ACEA00E7C422 /* ToDoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		CE5B4CC72DF0771A003C7841 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		CE5B4CC92DF07746003C7841 /* AddTaskModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskModuleBuilder.swift; sourceTree = "<group>"; };
 		CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -125,6 +127,7 @@
 		CE5B4C732DF06C6E003C7841 = {
 			isa = PBXGroup;
 			children = (
+				CEED34B12E93ACEA00E7C422 /* ToDoTableViewCell.swift */,
 				CE5B4CCF2DF08E9B003C7841 /* AppDelegate.swift */,
 				CE5B4CAA2DF06E0F003C7841 /* Model.xcdatamodeld */,
 				CE5B4CBD2DF07637003C7841 /* SceneDelegate.swift */,
@@ -320,6 +323,7 @@
 				CE5B4CBE2DF07637003C7841 /* SceneDelegate.swift in Sources */,
 				CE5B4CC42DF076B0003C7841 /* AddTaskPresenter.swift in Sources */,
 				CE5B4CC02DF0766A003C7841 /* AddTaskProtocols.swift in Sources */,
+				CEED34B22E93ACEA00E7C422 /* ToDoTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
