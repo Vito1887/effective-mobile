@@ -129,31 +129,25 @@ class ToDoInteractor: ToDoInteractorInput {
 
 
     func searchTasks(with query: String) {
-         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-             guard let self = self else { return }
-             let context = self.coreDataManager.newBackgroundContext()
-
-             context.perform { [weak self] in
-                 guard let self = self else { return }
-                 let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
-                 if !query.isEmpty {
-                     fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ OR details CONTAINS[cd] %@", query, query)
-                 }
-
-                 do {
-                     let searchResults = try context.fetch(fetchRequest)
-                     DispatchQueue.main.async {
-                         self.presenter?.didLoadTasks(searchResults)
-                     }
-                 } catch {
-                     print("Error searching tasks: \(error)")
-                     DispatchQueue.main.async {
-                         self.presenter?.didFailToLoadTasks(with: error)
-                     }
-                 }
-             }
-         }
-     }
+        let context = coreDataManager.mainContext
+        context.perform { [weak self] in
+            guard let self = self else { return }
+            let fetchRequest: NSFetchRequest<Task> = Task.fetchRequest()
+            if !query.isEmpty {
+                fetchRequest.predicate = NSPredicate(format: "title CONTAINS[cd] %@ OR details CONTAINS[cd] %@", query, query)
+            }
+            do {
+                let results = try context.fetch(fetchRequest)
+                DispatchQueue.main.async {
+                    self.presenter?.didLoadTasks(results)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    self.presenter?.didFailToLoadTasks(with: error)
+                }
+            }
+        }
+    }
 
     private func saveApiTasksToCoreData(_ todoItems: [TodoItem]) {
         let context = coreDataManager.newBackgroundContext()
